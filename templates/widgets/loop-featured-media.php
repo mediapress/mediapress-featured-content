@@ -45,7 +45,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <?php endwhile; ?>
 	<?php mpp_reset_media_data(); ?>
 <?php else : ?>
-    <?php _e( 'You do not have any featured media', 'mediapress-featured-content' ) ?>
+    <?php _e( 'You do not have any featured media', 'mpp-featured-content' ) ?>
 
     </div>
 <?php endif; ?>

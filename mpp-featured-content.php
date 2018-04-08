@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: MediaPress Featured Content
- * Description: An addon for MediaPress with BuddyPress to mark users or group media or gallery as featured and list them using shortcode or widget across the site
- * Plugin URI: https://buddydev.com/plugins/mediapress-featured-content
+ * Description: Let user feature their media and galleries.
+ * Plugin URI: https://buddydev.com/plugins/mpp-featured-content
  * Author: BuddyDev
  * Author URI: https://buddydev.com/
  * Version: 1.0.0
@@ -18,14 +18,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Class MPP_Featured_Content
+ * Class MPPFTC_Featured_Content
  */
-class MPP_Featured_Content {
+class MPPFTC_Featured_Content {
 
 	/**
 	 * Class instance
 	 *
-	 * @var MPP_Featured_Content
+	 * @var MPPFTC_Featured_Content
 	 */
 	private static $instance = null;
 
@@ -57,7 +57,7 @@ class MPP_Featured_Content {
 	/**
 	 * Get class instance
 	 *
-	 * @return MPP_Featured_Content
+	 * @return MPPFTC_Featured_Content
 	 */
 	public static function get_instance() {
 
@@ -113,23 +113,23 @@ class MPP_Featured_Content {
 			return;
 		}
 
-		wp_register_style( 'mppftc_css', $this->url . 'assets/css/mppftc.css' );
+		wp_register_style( 'mppftc-css', $this->url . 'assets/css/mppftc.css' );
 
-		wp_register_script( 'mppftc_js', $this->url . 'assets/js/mppftc.js' );
+		wp_register_script( 'mppftc-js', $this->url . 'assets/js/mppftc.js' );
 
-		wp_localize_script( 'mppftc_js', 'MPPFTC', array(
+		wp_localize_script( 'mppftc-js', 'MPPFTC', array(
 			'ajax_url' => admin_url( 'admin-ajax.php' ),
 		) );
 
-		wp_enqueue_style( 'mppftc_css' );
-		wp_enqueue_script( 'mppftc_js' );
+		wp_enqueue_style( 'mppftc-css' );
+		wp_enqueue_script( 'mppftc-js' );
 	}
 
 	/**
 	 * Load plugin language file
 	 */
 	public function load_text_domain() {
-		load_plugin_textdomain( 'mediapress-featured-content', false, basename( dirname( __FILE__ ) ) . '/languages/' );
+		load_plugin_textdomain( 'mpp-featured-content', false, basename( dirname( __FILE__ ) ) . '/languages/' );
 	}
 
 	/**
@@ -154,10 +154,10 @@ class MPP_Featured_Content {
 /**
  * Class instance
  *
- * @return MPP_Featured_Content
+ * @return MPPFTC_Featured_Content
  */
-function mppftc() {
-	return MPP_Featured_Content::get_instance();
+function mppftc_featured_content() {
+	return MPPFTC_Featured_Content::get_instance();
 }
 
-mppftc();
+mppftc_featured_content();

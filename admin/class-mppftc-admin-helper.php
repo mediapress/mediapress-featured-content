@@ -34,56 +34,56 @@ class MPPFTC_Admin_Settings_Helper {
 		$fields = array(
 			array(
 				'name'    => 'mppftc_enabled_for',
-				'label'   => __( 'Enable for', 'mediapress-featured-content' ),
+				'label'   => __( 'Enable for', 'mpp-featured-content' ),
 				'type'    => 'multicheck',
 				'options' => array(
-					'media'   => __( 'Media', 'mediapress-featured-content' ),
-					'gallery' => __( 'Gallery', 'mediapress-featured-content' ),
+					'media'   => __( 'Media', 'mpp-featured-content' ),
+					'gallery' => __( 'Gallery', 'mpp-featured-content' ),
 				),
 			),
 			array(
 				'name'    => 'mppftc_enabled_components',
-				'label'   => __( 'Select components', 'mediapress-featured-content' ),
+				'label'   => __( 'Select components', 'mpp-featured-content' ),
 				'type'    => 'multicheck',
 				'options' => mppftc_get_components(),
 			),
 			array(
 				'name'    => 'mppftc_enabled_types',
-				'label'   => __( 'Select types', 'mediapress-featured-content' ),
+				'label'   => __( 'Select types', 'mpp-featured-content' ),
 				'type'    => 'multicheck',
 				'options' => mppftc_get_types(),
 			),
 			array(
 				'name'    => 'mppftc_button_ui_places',
-				'label'   => __( 'Where to show mark featured button', 'mediapress-featured-content' ),
+				'label'   => __( 'Where to show mark featured button', 'mpp-featured-content' ),
 				'type'    => 'multicheck',
 				'options' => array(
-					'single_media'   => __( 'Single Media Page', 'mediapress-featured-content' ),
-					'light_box'      => __( 'LightBox', 'mediapress-featured-content' ),
-					'single_gallery' => __( 'Single Gallery', 'mediapress-featured-content' ),
-					'gallery_home'   => __( 'Gallery home', 'mediapress-featured-content' ),
+					'single_media'   => __( 'Single Media Page', 'mpp-featured-content' ),
+					'light_box'      => __( 'LightBox', 'mpp-featured-content' ),
+					'single_gallery' => __( 'Single Gallery', 'mpp-featured-content' ),
+					'gallery_home'   => __( 'Gallery home', 'mpp-featured-content' ),
 				),
 			),
 			array(
 				'name'    => 'mppftc_show_in_user_header',
-				'label'   => __( 'Show in user header', 'mediapress-featured-content' ),
+				'label'   => __( 'Show in user header', 'mpp-featured-content' ),
 				'type'    => 'select',
 				'options' => $this->get_header_options(),
 			),
 			array(
 				'name'    => 'mppftc_show_in_group_header',
-				'label'   => __( 'Show in group header', 'mediapress-featured-content' ),
+				'label'   => __( 'Show in group header', 'mpp-featured-content' ),
 				'type'    => 'select',
 				'options' => $this->get_header_options(),
 			),
 			array(
 				'name'  => 'mppftc_header_item_limit',
-				'label' => __( 'Header item limit', 'mediapress-featured-content' ),
+				'label' => __( 'Header item limit', 'mpp-featured-content' ),
 				'type'  => 'text',
 			),
 		);
 
-		$panel->add_section( 'mppftc-settings', __( 'MediaPress Featured Settings', 'mediapress-featured-content' ) )->add_fields( $fields );
+		$panel->add_section( 'mppftc-settings', __( 'MediaPress Featured Settings', 'mpp-featured-content' ) )->add_fields( $fields );
 	}
 
 	/**
@@ -93,9 +93,9 @@ class MPPFTC_Admin_Settings_Helper {
 	 */
 	private function get_header_options() {
 		return array(
-			'none'         => __( 'None', 'mediapress-featured-content' ),
-			'media_list'   => __( 'Media List', 'mediapress-featured-content' ),
-			'gallery_list' => __( 'Gallery List', 'mediapress-featured-content' ),
+			'none'         => __( 'None', 'mpp-featured-content' ),
+			'media_list'   => __( 'Media List', 'mpp-featured-content' ),
+			'gallery_list' => __( 'Gallery List', 'mpp-featured-content' ),
 		);
 	}
 }

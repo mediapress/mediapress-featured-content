@@ -24,7 +24,7 @@ class MPPFTC_Media_Widget extends WP_Widget {
 	public function __construct( $name = '', $widget_options = array() ) {
 
 		if ( empty( $name ) ) {
-			$name = __( '( MediaPress ) Featured Media', 'mediapress-featured-content' );
+			$name = __( '( MediaPress ) Featured Media', 'mpp-featured-content' );
 		}
 
 		parent::__construct( false, $name, $widget_options );
@@ -70,7 +70,7 @@ class MPPFTC_Media_Widget extends WP_Widget {
 
 		echo $args['before_title'] . esc_html( $title ) . $args['after_title'];
 
-		require mpp_locate_template( array( 'loop-featured-media.php' ), false, mppftc()->get_path() . 'templates/widgets' );
+		require mpp_locate_template( array( 'loop-featured-media.php' ), false, mppftc_featured_content()->get_path() . 'templates/widgets' );
 
 		echo $args['after_widget'];
 	}
@@ -108,7 +108,7 @@ class MPPFTC_Media_Widget extends WP_Widget {
 	public function form( $instance ) {
 
 		$defaults = array(
-			'title'       => __( 'Featured Media items', 'mediapress-featured-content' ),
+			'title'       => __( 'Featured Media items', 'mpp-featured-content' ),
 			'component'   => 'members',
 			'status'      => 'public',
 			'type'        => 'photo',
@@ -132,7 +132,7 @@ class MPPFTC_Media_Widget extends WP_Widget {
 
         <p>
             <label>
-				<?php _e( 'Title:', 'mediapress-featured-content' ); ?>
+				<?php _e( 'Title:', 'mpp-featured-content' ); ?>
                 <input class="mppftc-input" id="<?php echo $this->get_field_id( 'title' ); ?>"
                        name="<?php echo $this->get_field_name( 'title' ); ?>" type="text"
                        value="<?php echo esc_attr( $title ); ?>"/>
@@ -140,7 +140,7 @@ class MPPFTC_Media_Widget extends WP_Widget {
         </p>
 
         <p>
-			<?php _e( 'List media of user: ', 'mediapress-featured-content' ); ?>
+			<?php _e( 'List media of user: ', 'mpp-featured-content' ); ?>
 
 			<?php foreach ( mppftc_show_media_of() as $key => $label ) : ?>
 
@@ -157,7 +157,7 @@ class MPPFTC_Media_Widget extends WP_Widget {
         <p>
 			<?php
 			$components = mppftc_get_components();
-			_e( 'Select Component:', 'mediapress-featured-content' );
+			_e( 'Select Component:', 'mpp-featured-content' );
 			?>
 
 			<?php if ( ! empty( $components ) ) : ?>
@@ -169,7 +169,7 @@ class MPPFTC_Media_Widget extends WP_Widget {
                 </select>
 
 			<?php else: ?>
-				<?php _e( 'No Active component', 'mediapress-featured-content' ); ?>
+				<?php _e( 'No Active component', 'mpp-featured-content' ); ?>
 			<?php endif; ?>
 
         </p>
@@ -177,7 +177,7 @@ class MPPFTC_Media_Widget extends WP_Widget {
         <p>
 			<?php
 			$types = mppftc_get_types();
-			_e( 'Select Type: ', 'mediapress-featured-content' );
+			_e( 'Select Type: ', 'mpp-featured-content' );
 			?>
 
 			<?php if ( ! empty( $types ) ) : ?>
@@ -191,7 +191,7 @@ class MPPFTC_Media_Widget extends WP_Widget {
                 </select>
 
 			<?php else: ?>
-				<?php _e( 'No Active Type!', 'mediapress-featured-content' ); ?>
+				<?php _e( 'No Active Type!', 'mpp-featured-content' ); ?>
 			<?php endif; ?>
 
         </p>
@@ -199,7 +199,7 @@ class MPPFTC_Media_Widget extends WP_Widget {
         <p>
 			<?php
 			$active_status = mpp_get_active_statuses();
-			_e( 'Select Status: ', 'mediapress-featured-content' );
+			_e( 'Select Status: ', 'mpp-featured-content' );
 			?>
 
 	        <?php if ( ! empty( $active_status ) ) : ?>
@@ -217,7 +217,7 @@ class MPPFTC_Media_Widget extends WP_Widget {
 
         <p>
             <label>
-				<?php _e( 'Max media to show', 'mediapress-featured-content' ); ?>
+				<?php _e( 'Max media to show', 'mpp-featured-content' ); ?>
                 <input type="number" name="<?php echo $this->get_field_name( 'max_to_list' ); ?>"
                        value="<?php echo $max_to_list; ?>"/>
             </label>
@@ -225,13 +225,13 @@ class MPPFTC_Media_Widget extends WP_Widget {
 
         <p>
             <label>
-				<?php _e( 'Sort Order', 'mediapress-featured-content' ); ?>
+				<?php _e( 'Sort Order', 'mpp-featured-content' ); ?>
                 <select id="<?php echo $this->get_field_id( 'order' ); ?>"
                         name="<?php echo $this->get_field_name( 'order' ); ?>">
                     <option
-                            value="ASC" <?php selected( 'ASC', $order ); ?>><?php _e( 'Ascending', 'mediapress-featured-content' ); ?></option>
+                            value="ASC" <?php selected( 'ASC', $order ); ?>><?php _e( 'Ascending', 'mpp-featured-content' ); ?></option>
                     <option
-                            value="DESC" <?php selected( 'DESC', $order ); ?>><?php _e( 'Descending', 'mediapress-featured-content' ); ?></option>
+                            value="DESC" <?php selected( 'DESC', $order ); ?>><?php _e( 'Descending', 'mpp-featured-content' ); ?></option>
                 </select>
             </label>
 
@@ -239,15 +239,15 @@ class MPPFTC_Media_Widget extends WP_Widget {
 
         <p>
             <label>
-				<?php _e( 'Order By:', 'mediapress-featured-content' ); ?>
+				<?php _e( 'Order By:', 'mpp-featured-content' ); ?>
                 <select id="<?php echo $this->get_field_id( 'order_by' ); ?>"
                         name="<?php echo $this->get_field_name( 'order_by' ); ?>">
                     <option
-                            value="title" <?php selected( 'title', $order_by ); ?>><?php _e( 'Alphabet', 'mediapress-featured-content' ); ?></option>
+                            value="title" <?php selected( 'title', $order_by ); ?>><?php _e( 'Alphabet', 'mpp-featured-content' ); ?></option>
                     <option
-                            value="date" <?php selected( 'date', $order_by ); ?>><?php _e( 'Date', 'mediapress-featured-content' ); ?></option>
+                            value="date" <?php selected( 'date', $order_by ); ?>><?php _e( 'Date', 'mpp-featured-content' ); ?></option>
                     <option
-                            value="rand" <?php selected( 'rand', $order_by ); ?>><?php _e( 'Random', 'mediapress-featured-content' ); ?></option>
+                            value="rand" <?php selected( 'rand', $order_by ); ?>><?php _e( 'Random', 'mpp-featured-content' ); ?></option>
                 </select>
             </label>
         </p>

@@ -17,8 +17,8 @@ This section describes how to install the plugin and get it working.
 
 You may need to follow the following steps.
 
-1. Download `mediapress-featured-content.xyz.zip` (where xyz is version number )and extract
-2. Upload `mediapress-featured-content` directory to the `/wp-content/plugins/` directory
+1. Download `mpp-featured-content.xyz.zip` (where xyz is version number )and extract
+2. Upload `mpp-featured-content` directory to the `/wp-content/plugins/` directory
 3. Activate the plugin through the 'Plugins' menu in WordPress
 4. That's all.
 

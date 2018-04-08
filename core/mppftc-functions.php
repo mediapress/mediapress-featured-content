@@ -44,12 +44,12 @@ function mppftc_featured_button( $item_id ) {
  */
 function mppftc_get_featured_button( $item_id ) {
 
-	$label = __( 'Mark Featured', 'mediapress-featured-content' );
+	$label = __( 'Mark Featured', 'mpp-featured-content' );
 
 	$css_class = 'mppftc-btn-mark-featured';
 
 	if ( mppftc_is_item_featured( $item_id ) ) {
-		$label = __( 'Remove Featured', 'mediapress-featured-content' );
+		$label = __( 'Remove Featured', 'mpp-featured-content' );
 		$css_class = 'mppftc-btn-remove-featured';
 	}
 
@@ -132,9 +132,9 @@ function mppftc_get_components() {
 		if ( 'sitewide' == $key ) {
 			continue;
 		} elseif ( 'members' == $key ) {
-			$label = __( 'Users', 'mediapress-featured-content' );
+			$label = __( 'Users', 'mpp-featured-content' );
 		} elseif ( 'groups' == $key ) {
-			$label = __( 'Groups', 'mediapress-featured-content' );
+			$label = __( 'Groups', 'mpp-featured-content' );
 		}
 
 		if ( $label ) {
@@ -345,8 +345,8 @@ function mppftc_get_header_item_limit() {
 function mppftc_show_media_of() {
 
 	return array(
-		'loggedin'  => __( 'Logged In', 'mediapress-featured-content' ),
-		'displayed' => __( 'Displayed', 'mediapress-featured-content' ),
+		'loggedin'  => __( 'Logged In', 'mpp-featured-content' ),
+		'displayed' => __( 'Displayed', 'mpp-featured-content' ),
 	);
 }
 
@@ -362,7 +362,7 @@ function mppftc_render_user_featured_gallery_page() {
  * Show featured gallery list.
  */
 function mppftc_render_user_featured_gallery() {
-	mpp_locate_template( array( 'members/loop-featured-gallery.php' ), true, mppftc()->get_path() . 'templates/' );
+	mpp_locate_template( array( 'members/loop-featured-gallery.php' ), true, mppftc_featured_content()->get_path() . 'templates/' );
 }
 
 /**
@@ -377,7 +377,7 @@ function mppftc_render_user_featured_media_page() {
  * Include Featured loop of users.
  */
 function mppftc_render_user_featured_media() {
-	mpp_locate_template( array( 'members/loop-featured-media.php' ), true, mppftc()->get_path() . 'templates/' );
+	mpp_locate_template( array( 'members/loop-featured-media.php' ), true, mppftc_featured_content()->get_path() . 'templates/' );
 }
 
 /**

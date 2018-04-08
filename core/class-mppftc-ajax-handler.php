@@ -40,7 +40,7 @@ class MPPFTC_Ajax_Handler {
 
 		if ( empty( $item_id ) || ! mppftc_user_can_mark_item_featured( $item_id ) ) {
 			wp_send_json_error( array(
-				'message' => __( 'Could not process', 'mediapress-featured-content' ),
+				'message' => __( 'Could not process', 'mpp-featured-content' ),
 			) );
 		}
 
@@ -49,10 +49,10 @@ class MPPFTC_Ajax_Handler {
 		// Removing media as featured media.
 		if ( mppftc_is_item_featured( $item_id ) ) {
 			delete_post_meta( $item_id, '_mppftc_featured' );
-			$label = __( 'Mark Featured', 'mediapress-featured-content' );
+			$label = __( 'Mark Featured', 'mpp-featured-content' );
 		} else {
 			add_post_meta( $item_id, '_mppftc_featured', 1, 1 );
-			$label = __( 'Remove Featured', 'mediapress-featured-content' );
+			$label = __( 'Remove Featured', 'mpp-featured-content' );
 		}
 
 		wp_send_json_success( array(

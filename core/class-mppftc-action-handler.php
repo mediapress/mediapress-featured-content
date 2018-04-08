@@ -47,7 +47,7 @@ class MPPFTC_Action_Handler {
 
 		if ( in_array( 'gallery', $enabeld_for ) ) {
 			$sub_nav_items[] = array(
-				'name'            => __( 'Featured Gallery', 'mediapress-featured-content' ),
+				'name'            => __( 'Featured Gallery', 'mpp-featured-content' ),
 				'slug'            => 'featured-gallery',
 				'parent_url'      => $parent_url,
 				'parent_slug'     => $parent_slug,
@@ -58,7 +58,7 @@ class MPPFTC_Action_Handler {
 
 		if ( in_array( 'media', $enabeld_for ) ) {
 			$sub_nav_items[] = array(
-				'name'            => __( 'Featured Media', 'mediapress-featured-content' ),
+				'name'            => __( 'Featured Media', 'mpp-featured-content' ),
 				'slug'            => 'featured-media',
 				'parent_url'      => $parent_url,
 				'parent_slug'     => $parent_slug,
@@ -80,11 +80,11 @@ class MPPFTC_Action_Handler {
 		$enabeld_for = mpp_get_option( 'mppftc_enabled_for', array() );
 
 		if ( in_array( 'gallery', $enabeld_for ) ) {
-			echo sprintf( "<li><a href='%s'>%s</a></li>", esc_url( mppftc_groups_get_featured_gallery_url() ), __( 'Featured Gallery', 'mediapress-featured-content' ) );
+			echo sprintf( "<li><a href='%s'>%s</a></li>", esc_url( mppftc_groups_get_featured_gallery_url() ), __( 'Featured Gallery', 'mpp-featured-content' ) );
 		}
 
 		if ( in_array( 'media', $enabeld_for ) ) {
-			echo sprintf( "<li><a href='%s'>%s</a></li>", esc_url( mppftc_groups_get_featured_media_url() ), __( 'Featured Media', 'mediapress-featured-content' ) );
+			echo sprintf( "<li><a href='%s'>%s</a></li>", esc_url( mppftc_groups_get_featured_media_url() ), __( 'Featured Media', 'mpp-featured-content' ) );
 		}
 	}
 
@@ -119,9 +119,9 @@ class MPPFTC_Action_Handler {
 		}
 
 		if ( bp_is_action_variable( 'featured-media', 0 ) ) {
-			$template = mpp_locate_template( array( 'loop-featured-media.php' ), false, mppftc()->get_path() . 'templates/groups/' );
+			$template = mpp_locate_template( array( 'loop-featured-media.php' ), false, mppftc_featured_content()->get_path() . 'templates/groups/' );
 		} elseif ( bp_is_action_variable( 'featured-gallery', 0 ) ) {
-			$template = mpp_locate_template( array( 'loop-featured-gallery.php' ), false, mppftc()->get_path() . 'templates/groups/' );
+			$template = mpp_locate_template( array( 'loop-featured-gallery.php' ), false, mppftc_featured_content()->get_path() . 'templates/groups/' );
 		}
 
 		return $template;

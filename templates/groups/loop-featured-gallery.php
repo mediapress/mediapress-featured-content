@@ -67,6 +67,6 @@ $query = new MPP_Gallery_Query( $args );
 	<?php mpp_reset_gallery_data(); ?>
 <?php else : ?>
 	<div class="mpp-notice mpp-no-gallery-notice">
-		<p> <?php _ex( 'There are no galleries available!', 'No Gallery Message', 'mediapress-featured-content' ); ?>
+		<p> <?php _ex( 'There are no galleries available!', 'No Gallery Message', 'mpp-featured-content' ); ?>
 	</div>
 <?php endif; ?>
