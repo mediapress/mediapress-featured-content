@@ -5,7 +5,7 @@
  * @package mediapress-featured-content
  */
 
-// Exit if file access directly
+// Exit if file access directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -41,10 +41,10 @@ class MPPFTC_Media_Widget extends WP_Widget {
 		$component    = $instance['component'];
 		$component_id = '';
 
-		if ( 'groups' == $component ) {
+		if ( 'groups' === $component ) {
 			$component_id = bp_get_current_group_id();
-		} elseif ( 'members' == $component ) {
-			$component_id = ( $instance['user_type'] == 'displayed' ) ? bp_displayed_user_id() : bp_loggedin_user_id();
+		} elseif ( 'members' === $component ) {
+			$component_id = ( 'displayed' === $instance['user_type'] ) ? bp_displayed_user_id() : bp_loggedin_user_id();
 		}
 
 		if ( empty( $component_id ) ) {
@@ -102,8 +102,6 @@ class MPPFTC_Media_Widget extends WP_Widget {
 	 * Render widget settings form
 	 *
 	 * @param array $instance Settings value.
-	 *
-	 * @return string
 	 */
 	public function form( $instance ) {
 
@@ -140,7 +138,7 @@ class MPPFTC_Media_Widget extends WP_Widget {
         </p>
 
         <p>
-			<?php _e( 'List media of user: ', 'mpp-featured-content' ); ?>
+			<?php _e( 'List media of user:', 'mpp-featured-content' ); ?>
 
 			<?php foreach ( mppftc_show_media_of() as $key => $label ) : ?>
 
@@ -168,7 +166,7 @@ class MPPFTC_Media_Widget extends WP_Widget {
 					<?php endforeach; ?>
                 </select>
 
-			<?php else: ?>
+			<?php else : ?>
 				<?php _e( 'No Active component', 'mpp-featured-content' ); ?>
 			<?php endif; ?>
 
@@ -177,7 +175,7 @@ class MPPFTC_Media_Widget extends WP_Widget {
         <p>
 			<?php
 			$types = mppftc_get_types();
-			_e( 'Select Type: ', 'mpp-featured-content' );
+			_e( 'Select Type:', 'mpp-featured-content' );
 			?>
 
 			<?php if ( ! empty( $types ) ) : ?>
@@ -199,7 +197,7 @@ class MPPFTC_Media_Widget extends WP_Widget {
         <p>
 			<?php
 			$active_status = mpp_get_active_statuses();
-			_e( 'Select Status: ', 'mpp-featured-content' );
+			_e( 'Select Status:', 'mpp-featured-content' );
 			?>
 
 	        <?php if ( ! empty( $active_status ) ) : ?>
@@ -217,7 +215,7 @@ class MPPFTC_Media_Widget extends WP_Widget {
 
         <p>
             <label>
-				<?php _e( 'Max media to show', 'mpp-featured-content' ); ?>
+				<?php _e( 'Max media to show:', 'mpp-featured-content' ); ?>
                 <input type="number" name="<?php echo $this->get_field_name( 'max_to_list' ); ?>"
                        value="<?php echo $max_to_list; ?>"/>
             </label>
@@ -225,7 +223,7 @@ class MPPFTC_Media_Widget extends WP_Widget {
 
         <p>
             <label>
-				<?php _e( 'Sort Order', 'mpp-featured-content' ); ?>
+				<?php _e( 'Sort Order:', 'mpp-featured-content' ); ?>
                 <select id="<?php echo $this->get_field_id( 'order' ); ?>"
                         name="<?php echo $this->get_field_name( 'order' ); ?>">
                     <option

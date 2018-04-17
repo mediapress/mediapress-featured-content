@@ -5,7 +5,7 @@
  * @package mediapress-featured-content
  */
 
-// Exit if file access directly
+// Exit if file access directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -55,7 +55,7 @@ class MPPFTC_Admin_Settings_Helper {
 			),
 			array(
 				'name'    => 'mppftc_button_ui_places',
-				'label'   => __( 'Where to show mark featured button', 'mpp-featured-content' ),
+				'label'   => __( 'Where to show mark featured button?', 'mpp-featured-content' ),
 				'type'    => 'multicheck',
 				'options' => array(
 					'single_media'   => __( 'Single Media Page', 'mpp-featured-content' ),

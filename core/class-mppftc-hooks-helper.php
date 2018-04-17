@@ -26,18 +26,21 @@ class MPPFTC_Hooks_Helper {
 	 * Call back to various hooks
 	 */
 	public function setup_hooks() {
+		// add buttons.
 		add_action( 'mpp_media_meta', array( $this, 'add_media_ui' ) );
 		add_action( 'mpp_lightbox_media_meta', array( $this, 'add_lightbox_ui' ) );
-
 		add_action( 'mpp_gallery_meta', array( $this, 'add_gallery_ui' ) );
+
+		// show the feature list.
 		add_action( 'bp_profile_header_meta', array( $this, 'render_user_header_featured_items' ) );
 		add_action( 'bp_group_header_meta', array( $this, 'render_group_header_featured_items' ) );
 
-		// Category attribute support to [mpp-list-gallery] and filter galleries based on categories ids.
+		// extend shortcodes to list featured items.
+		// featured attribute support to [mpp-list-gallery] and filter galleries based on categories ids.
 		add_filter( 'mpp_shortcode_list_gallery_defaults', array( $this, 'modify_mpp_list_gallery_default_args' ) );
 		add_filter( 'mpp_shortcode_list_gallery_query_args', array( $this, 'modify_mpp_list_gallery_query_args' ) );
 
-		// Category attribute support to [mpp-list-media] and filter media based on categories ids.
+		// featured attribute support to [mpp-list-media] and filter media based on categories ids.
 		add_filter( 'mpp_shortcode_list_media_defaults', array( $this, 'modify_mpp_list_media_default_args' ) );
 		add_filter( 'mpp_shortcode_list_media_query_args', array( $this, 'modify_mpp_list_media_query_args' ) );
 	}
@@ -59,7 +62,7 @@ class MPPFTC_Hooks_Helper {
 	}
 
 	/**
-	 * Add button in lightbox
+	 * Add button in lightbox.
 	 *
 	 * @return string
 	 */
@@ -100,7 +103,7 @@ class MPPFTC_Hooks_Helper {
 
 		$show_in_header = mpp_get_option( 'mppftc_show_in_user_header', 'none' );
 
-		if ( 'none' == $show_in_header ) {
+		if ( 'none' === $show_in_header ) {
 			return '';
 		}
 
@@ -128,7 +131,7 @@ class MPPFTC_Hooks_Helper {
 
 		$show_in_header = mpp_get_option( 'mppftc_show_in_group_header', 'none' );
 
-		if ( 'none' == $show_in_header ) {
+		if ( 'none' === $show_in_header ) {
 			return '';
 		}
 
@@ -168,6 +171,12 @@ class MPPFTC_Hooks_Helper {
 	 */
 	public function modify_mpp_list_gallery_query_args( $atts ) {
 
+
+		/**
+		 * Note: it will conflict with other meta queries.
+		 *
+		 * @todo use better handling for featured atts.
+		 */
 		if ( ! empty( $atts['featured'] ) ) {
 			$atts['meta_key'] = '_mppftc_featured';
 		}
@@ -196,6 +205,11 @@ class MPPFTC_Hooks_Helper {
 	 */
 	public function modify_mpp_list_media_query_args( $atts ) {
 
+		/**
+		 * Note: it will conflict with other meta queries.
+		 *
+		 * @todo use better handling for featured atts.
+		 */
 		if ( ! empty( $atts['featured'] ) ) {
 			$atts['meta_key'] = '_mppftc_featured';
 		}

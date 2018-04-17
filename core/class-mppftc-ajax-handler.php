@@ -45,7 +45,6 @@ class MPPFTC_Ajax_Handler {
 		}
 
 
-		$label = '';
 		// Removing media as featured media.
 		if ( mppftc_is_item_featured( $item_id ) ) {
 			delete_post_meta( $item_id, '_mppftc_featured' );

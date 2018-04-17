@@ -41,11 +41,11 @@ class MPPFTC_Action_Handler {
 		$user_domain = trailingslashit( bp_displayed_user_domain() );
 		$parent_slug = MPP_GALLERY_SLUG;
 		$parent_url  = trailingslashit( $user_domain . $parent_slug );
-		$enabeld_for = mpp_get_option( 'mppftc_enabled_for', array() );
+		$enabled_for = mpp_get_option( 'mppftc_enabled_for', array() );
 
 		$sub_nav_items = array();
 
-		if ( in_array( 'gallery', $enabeld_for ) ) {
+		if ( in_array( 'gallery', $enabled_for ) ) {
 			$sub_nav_items[] = array(
 				'name'            => __( 'Featured Gallery', 'mpp-featured-content' ),
 				'slug'            => 'featured-gallery',
@@ -56,7 +56,7 @@ class MPPFTC_Action_Handler {
 			);
 		}
 
-		if ( in_array( 'media', $enabeld_for ) ) {
+		if ( in_array( 'media', $enabled_for ) ) {
 			$sub_nav_items[] = array(
 				'name'            => __( 'Featured Media', 'mpp-featured-content' ),
 				'slug'            => 'featured-media',
@@ -129,7 +129,4 @@ class MPPFTC_Action_Handler {
 }
 
 new MPPFTC_Action_Handler();
-
-
-
 

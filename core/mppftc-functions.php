@@ -72,10 +72,10 @@ function mppftc_user_can_mark_item_featured( $item_id ) {
 	if ( empty( $user_id ) || empty( $item ) ) {
 		return false;
 	}
-
+    // do not use === here, the values can be str/int.
 	if ( $item->user_id == $user_id ) {
 		$can = true;
-	} elseif ( 'groups' == $item->component && bp_is_active( 'groups' ) && groups_is_user_admin( $user_id, $item->component_id ) ) {
+	} elseif ( 'groups' === $item->component && bp_is_active( 'groups' ) && groups_is_user_admin( $user_id, $item->component_id ) ) {
 		$can = true;
 	}
 
@@ -98,13 +98,13 @@ function mppftc_is_item_featurable( $item_id ) {
 	$enabled_type      = mpp_get_option( 'mppftc_enabled_types', array() );
 
 	// Complex will fix in future.
-	if ( mpp_is_valid_media( $item_id ) && ! in_array( 'media', $enabled_for ) ) {
+	if ( mpp_is_valid_media( $item_id ) && ! in_array( 'media', $enabled_for, true ) ) {
 		return false;
-	} elseif ( mpp_is_valid_gallery( $item_id ) && ! in_array( 'gallery', $enabled_for ) ) {
+	} elseif ( mpp_is_valid_gallery( $item_id ) && ! in_array( 'gallery', $enabled_for, true ) ) {
 		return false;
 	}
 
-	if ( ! in_array( $item->component, $enabled_component ) || ! in_array( $item->type, $enabled_type ) ) {
+	if ( ! in_array( $item->component, $enabled_component,true ) || ! in_array( $item->type, $enabled_type, true ) ) {
 		return false;
 	}
 
@@ -129,11 +129,11 @@ function mppftc_get_components() {
 	foreach ( $active_components as $key => $component ) {
 		$label = '';
 
-		if ( 'sitewide' == $key ) {
+		if ( 'sitewide' === $key ) {
 			continue;
-		} elseif ( 'members' == $key ) {
+		} elseif ( 'members' === $key ) {
 			$label = __( 'Users', 'mpp-featured-content' );
-		} elseif ( 'groups' == $key ) {
+		} elseif ( 'groups' === $key ) {
 			$label = __( 'Groups', 'mpp-featured-content' );
 		}
 
@@ -230,6 +230,11 @@ function mppftc_get_featured_media( $args = array() ) {
 		'per_page'     => 5,
 	);
 
+	/**
+	 * Note: it will conflict with other meta queries.
+	 *
+	 * @todo use better handling for featured atts.
+	 */
 	$args = wp_parse_args( $args, $default );
 	$args['meta_key'] = '_mppftc_featured';
 
@@ -286,6 +291,11 @@ function mppftc_get_featured_galleries( $args = array() ) {
 		'per_page'     => 5,
 	);
 
+	/**
+	 * Note: it will conflict with other meta queries.
+	 *
+	 * @todo use better handling for featured atts.
+	 */
 	$args = wp_parse_args( $args, $default );
 	$args['meta_key'] = '_mppftc_featured';
 
@@ -394,7 +404,7 @@ function mppftc_groups_get_featured_gallery_url() {
 	$component    = 'groups';
 	$component_id = groups_get_current_group()->id;
 
-	return trailingslashit( mpp_get_gallery_base_url( $component, $component_id ) ) . 'featured-gallery';
+	return trailingslashit( mpp_get_gallery_base_url( $component, $component_id ) ) . 'featured-gallery/';
 }
 
 /**
@@ -411,5 +421,5 @@ function mppftc_groups_get_featured_media_url() {
 	$component    = 'groups';
 	$component_id = groups_get_current_group()->id;
 
-	return trailingslashit( mpp_get_gallery_base_url( $component, $component_id ) ) . 'featured-media';
+	return trailingslashit( mpp_get_gallery_base_url( $component, $component_id ) ) . 'featured-media/';
 }

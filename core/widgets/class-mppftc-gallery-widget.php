@@ -108,8 +108,6 @@ class MPPFTC_Gallery_widget extends WP_Widget {
 	 * Render widget settings form
 	 *
 	 * @param array $instance Current settings.
-	 *
-	 * @return string
 	 */
 	public function form( $instance ) {
 
@@ -164,7 +162,7 @@ class MPPFTC_Gallery_widget extends WP_Widget {
 
 			$components = mppftc_get_components();
 
-			_e( 'Select Component: ', 'mpp-featured-content' );
+			_e( 'Select Component:', 'mpp-featured-content' );
 
 			?>
 
@@ -188,11 +186,11 @@ class MPPFTC_Gallery_widget extends WP_Widget {
 
 			$types = mppftc_get_types();
 
-			_e( 'Select Type: ', 'mpp-featured-content' );
+			_e( 'Select Type:', 'mpp-featured-content' );
 
 			?>
 
-			<?php if ( ! empty( $types ) ): ?>
+			<?php if ( ! empty( $types ) ) : ?>
 
                 <select name="<?php echo $this->get_field_name( 'type' ); ?>">
 
@@ -218,7 +216,7 @@ class MPPFTC_Gallery_widget extends WP_Widget {
 
 			$active_status = mpp_get_active_statuses();
 
-			_e( 'Select Status: ', 'mpp-featured-content' );
+			_e( 'Select Status:', 'mpp-featured-content' );
 
 			?>
 
@@ -241,7 +239,7 @@ class MPPFTC_Gallery_widget extends WP_Widget {
 
         <p>
             <label>
-				<?php _e( 'Max media to show', 'mpp-featured-content' ); ?>
+				<?php _e( 'Max media to show:', 'mpp-featured-content' ); ?>
                 <input type="number" name="<?php echo $this->get_field_name( 'max_to_list' ); ?>"
                        value="<?php echo $max_to_list; ?>"/>
             </label>
@@ -249,7 +247,7 @@ class MPPFTC_Gallery_widget extends WP_Widget {
 
         <p>
             <label>
-				<?php _e( 'Sort Order', 'mpp-featured-content' ); ?>
+				<?php _e( 'Sort Order:', 'mpp-featured-content' ); ?>
                 <select id="<?php echo $this->get_field_id( 'order' ); ?>"
                         name="<?php echo $this->get_field_name( 'order' ); ?>">
                     <option
