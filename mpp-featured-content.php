@@ -6,6 +6,9 @@
  * Author: BuddyDev
  * Author URI: https://buddydev.com/
  * Version: 1.0.0
+ *
+ * Text Domain: mpp-featured-content
+ * Domain Path: /languages
  */
 
 /**
