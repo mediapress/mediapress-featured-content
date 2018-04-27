@@ -9,7 +9,7 @@ jQuery(document).ready(function( $ ){
 
         $.post( ajax_url, {
             action: 'mppftc_featured_action',
-            item_id: $this.data('itemId'),
+            item_id: $this.data('item-id'),
             nonce:   $this.data('nonce')
         }, function(resp){
             if ( resp.success ) {

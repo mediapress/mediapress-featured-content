@@ -116,16 +116,16 @@ class MPPFTC_Featured_Content {
 			return;
 		}
 
-		wp_register_style( 'mppftc-css', $this->url . 'assets/css/mppftc.css' );
+		wp_register_style( 'mpp-featured-content', $this->url . 'assets/css/mpp-featured-content.css' );
 
-		wp_register_script( 'mppftc-js', $this->url . 'assets/js/mppftc.js', array( 'jquery' ) );
+		wp_register_script( 'mpp-featured-content', $this->url . 'assets/js/mpp-featured-content.js', array( 'jquery' ) );
 
-		wp_localize_script( 'mppftc-js', 'MPPFTC', array(
-			'ajax_url' => admin_url( 'admin-ajax.php' ),
+		wp_localize_script( 'mpp-featured-content', 'MPPFeaturedContent', array(
+			'ajaxUrl' => admin_url( 'admin-ajax.php' ),
 		) );
 
-		wp_enqueue_style( 'mppftc-css' );
-		wp_enqueue_script( 'mppftc-js' );
+		wp_enqueue_style( 'mpp-featured-content' );
+		wp_enqueue_script( 'mpp-featured-content' );
 	}
 
 	/**
