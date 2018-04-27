@@ -11,6 +11,36 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Render featured media button
+ *
+ * @param int $item_id item_id.
+ */
+function mppftc_featured_button( $item_id ) {
+	echo mppftc_get_featured_button( $item_id );
+}
+
+/**
+ * Get mark as featured button
+ *
+ * @param int $item_id Item id.
+ *
+ * @return string
+ */
+function mppftc_get_featured_button( $item_id ) {
+
+	$label = __( 'Set Featured', 'mpp-featured-content' );
+
+	$css_class = 'mppftc-btn-mark-featured';
+
+	if ( mppftc_is_item_featured( $item_id ) ) {
+		$label = __( 'Remove Featured', 'mpp-featured-content' );
+		$css_class = 'mppftc-btn-remove-featured';
+	}
+
+	return sprintf( '<div class="generic-button %s"><a href="#" class="mppftc-featured-btn" data-item-id="%s" data-nonce="%s">%s</a></div>', $css_class, $item_id, wp_create_nonce( 'mppftc-featured-action' ), $label );
+}
+
+/**
  * Render featured media
  *
  * @param array $args args.

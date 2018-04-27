@@ -27,62 +27,6 @@ function mppftc_is_item_featured( $item_id ) {
 }
 
 /**
- * Render featured media button
- *
- * @param int $item_id item_id.
- */
-function mppftc_featured_button( $item_id ) {
-	echo mppftc_get_featured_button( $item_id );
-}
-
-/**
- * Get mark as featured button
- *
- * @param int $item_id Item id.
- *
- * @return string
- */
-function mppftc_get_featured_button( $item_id ) {
-
-	$label = __( 'Set Featured', 'mpp-featured-content' );
-
-	$css_class = 'mppftc-btn-mark-featured';
-
-	if ( mppftc_is_item_featured( $item_id ) ) {
-		$label = __( 'Remove Featured', 'mpp-featured-content' );
-		$css_class = 'mppftc-btn-remove-featured';
-	}
-
-	return sprintf( '<div class="generic-button %s"><a href="#" class="mppftc-featured-btn" data-item-id="%s" data-nonce="%s">%s</a></div>', $css_class, $item_id, wp_create_nonce( 'mppftc-featured-action' ), $label );
-}
-
-/**
- * Check weather user mark item featured or not
- *
- * @param int $item_id Id of media or gallery.
- *
- * @return bool
- */
-function mppftc_user_can_mark_item_featured( $item_id ) {
-
-	$can     = false;
-	$user_id = get_current_user_id();
-	$item    = mppftc_get_item( $item_id );
-
-	if ( empty( $user_id ) || empty( $item ) ) {
-		return false;
-	}
-    // do not use === here, the values can be str/int.
-	if ( $item->user_id == $user_id ) {
-		$can = true;
-	} elseif ( 'groups' === $item->component && function_exists( 'bp_is_active' ) && bp_is_active( 'groups' ) && groups_is_user_admin( $user_id, $item->component_id ) ) {
-		$can = true;
-	}
-
-	return apply_filters( 'mppftc_user_can_mark_item_featured', $can, $item );
-}
-
-/**
  * Checks if item can be featured
  *
  * @param int $item_id Item id.
@@ -109,6 +53,32 @@ function mppftc_is_item_featurable( $item_id ) {
 	}
 
 	return true;
+}
+
+/**
+ * Check weather user mark item featured or not
+ *
+ * @param int $item_id Id of media or gallery.
+ *
+ * @return bool
+ */
+function mppftc_user_can_mark_item_featured( $item_id ) {
+
+	$can     = false;
+	$user_id = get_current_user_id();
+	$item    = mppftc_get_item( $item_id );
+
+	if ( empty( $user_id ) || empty( $item ) ) {
+		return false;
+	}
+	// do not use === here, the values can be str/int.
+	if ( $item->user_id == $user_id ) {
+		$can = true;
+	} elseif ( 'groups' === $item->component && function_exists( 'bp_is_active' ) && bp_is_active( 'groups' ) && groups_is_user_admin( $user_id, $item->component_id ) ) {
+		$can = true;
+	}
+
+	return apply_filters( 'mppftc_user_can_mark_item_featured', $can, $item );
 }
 
 /**
