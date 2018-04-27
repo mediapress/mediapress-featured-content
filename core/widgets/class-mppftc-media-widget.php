@@ -205,7 +205,7 @@ class MPPFTC_Media_Widget extends WP_Widget {
                 <select name="<?php echo $this->get_field_name( 'status' ); ?>">
 					<?php foreach ( $active_status as $key => $label ) : ?>
                         <option value="<?php echo $key ?>" <?php selected( $status, $key ) ?>>
-							<?php $label->label; ?>
+							<?php echo $label->label; ?>
                         </option>
 					<?php endforeach; ?>
                 </select>

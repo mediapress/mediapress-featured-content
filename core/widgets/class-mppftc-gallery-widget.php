@@ -195,7 +195,6 @@ class MPPFTC_Gallery_widget extends WP_Widget {
                 <select name="<?php echo $this->get_field_name( 'type' ); ?>">
 
 					<?php foreach ( $types as $key => $label ) : ?>
-
                         <option value="<?php echo $key ?>" <?php selected( $type, $key ) ?>>
 							<?php echo $label; ?>
                         </option>

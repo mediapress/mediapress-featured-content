@@ -45,7 +45,7 @@ class MPPFTC_Action_Handler {
 
 		$sub_nav_items = array();
 
-		if ( in_array( 'gallery', $enabled_for ) ) {
+		if ( in_array( 'gallery', $enabled_for,true ) ) {
 			$sub_nav_items[] = array(
 				'name'            => __( 'Featured Gallery', 'mpp-featured-content' ),
 				'slug'            => 'featured-gallery',
@@ -56,7 +56,7 @@ class MPPFTC_Action_Handler {
 			);
 		}
 
-		if ( in_array( 'media', $enabled_for ) ) {
+		if ( in_array( 'media', $enabled_for, true ) ) {
 			$sub_nav_items[] = array(
 				'name'            => __( 'Featured Media', 'mpp-featured-content' ),
 				'slug'            => 'featured-media',
@@ -77,13 +77,13 @@ class MPPFTC_Action_Handler {
 	 */
 	public function register_group_subnav_items() {
 
-		$enabeld_for = mpp_get_option( 'mppftc_enabled_for', array() );
+		$enabled_for = mpp_get_option( 'mppftc_enabled_for', array() );
 
-		if ( in_array( 'gallery', $enabeld_for ) ) {
+		if ( in_array( 'gallery', $enabled_for,true ) ) {
 			echo sprintf( "<li><a href='%s'>%s</a></li>", esc_url( mppftc_groups_get_featured_gallery_url() ), __( 'Featured Gallery', 'mpp-featured-content' ) );
 		}
 
-		if ( in_array( 'media', $enabeld_for ) ) {
+		if ( in_array( 'media', $enabled_for,true ) ) {
 			echo sprintf( "<li><a href='%s'>%s</a></li>", esc_url( mppftc_groups_get_featured_media_url() ), __( 'Featured Media', 'mpp-featured-content' ) );
 		}
 	}
@@ -129,4 +129,3 @@ class MPPFTC_Action_Handler {
 }
 
 new MPPFTC_Action_Handler();
-
