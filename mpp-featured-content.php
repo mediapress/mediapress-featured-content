@@ -118,7 +118,7 @@ class MPPFTC_Featured_Content {
 
 		wp_register_style( 'mppftc-css', $this->url . 'assets/css/mppftc.css' );
 
-		wp_register_script( 'mppftc-js', $this->url . 'assets/js/mppftc.js' );
+		wp_register_script( 'mppftc-js', $this->url . 'assets/js/mppftc.js', array( 'jquery' ) );
 
 		wp_localize_script( 'mppftc-js', 'MPPFTC', array(
 			'ajax_url' => admin_url( 'admin-ajax.php' ),
