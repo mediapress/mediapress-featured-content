@@ -216,6 +216,33 @@ function mppftc_get_featured_media( $args = array() ) {
 	return $query->posts;
 }
 
+/**
+ * Get featured galleries
+ *
+ * @param array $args args.
+ *
+ * @return array
+ */
+function mppftc_get_featured_galleries( $args = array() ) {
+
+	$default = array(
+		'component'    => 'members',
+		'component_id' => get_current_user_id(),
+		'per_page'     => 5,
+	);
+
+	/**
+	 * Note: it will conflict with other meta queries.
+	 *
+	 * @todo use better handling for featured atts.
+	 */
+	$args = wp_parse_args( $args, $default );
+	$args['meta_key'] = '_mppftc_featured';
+
+	$query = new MPP_Gallery_Query( $args );
+
+	return $query->posts;
+}
 
 /**
  * Get header media limit

@@ -73,33 +73,6 @@ function mppftc_featured_media( $args = array() ) {
 	<?php
 }
 
-/**
- * Get featured galleries
- *
- * @param array $args args.
- *
- * @return array
- */
-function mppftc_get_featured_galleries( $args = array() ) {
-
-	$default = array(
-		'component'    => 'members',
-		'component_id' => get_current_user_id(),
-		'per_page'     => 5,
-	);
-
-	/**
-	 * Note: it will conflict with other meta queries.
-	 *
-	 * @todo use better handling for featured atts.
-	 */
-	$args = wp_parse_args( $args, $default );
-	$args['meta_key'] = '_mppftc_featured';
-
-	$query = new MPP_Gallery_Query( $args );
-
-	return $query->posts;
-}
 
 /**
  * Render featured media
@@ -140,7 +113,7 @@ function mppftc_featured_galleries( $args = array() ) {
  */
 function mppftc_render_user_featured_gallery_page() {
 	add_action( 'bp_template_content', 'mppftc_render_user_featured_gallery' );
-	bp_core_load_template( 'members/single/plugins' );
+	bp_core_load_template( array( 'members/single/plugins' ) );
 }
 
 /**
@@ -155,7 +128,7 @@ function mppftc_render_user_featured_gallery() {
  */
 function mppftc_render_user_featured_media_page() {
 	add_action( 'bp_template_content', 'mppftc_render_user_featured_media' );
-	bp_core_load_template( 'members/single/plugins' );
+	bp_core_load_template( array( 'members/single/plugins' ) );
 }
 
 /**
