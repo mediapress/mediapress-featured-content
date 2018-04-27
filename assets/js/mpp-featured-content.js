@@ -1,8 +1,8 @@
 /* global jQuery */
 jQuery(document).ready(function( $ ){
     "use strict";
-    /* global MPPFTC  */
-    var ajax_url = MPPFTC.ajax_url;
+    /* global MPPFeaturedContent  */
+    var ajax_url = MPPFeaturedContent.ajaxUrl;
 
     $(document).on('click', 'a.mppftc-featured-btn',function() {
         var $this = $(this);
