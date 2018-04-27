@@ -30,6 +30,7 @@ class MPPFTC_Admin_Settings_Helper {
 	public function register_settings( $page ) {
 
 		$panel = $page->get_panel( 'addons' );
+		$section = $panel->add_section( 'mppftc-settings', __( 'MediaPress Featured Content', 'mpp-featured-content' ) );
 
 		$fields = array(
 			array(
@@ -83,7 +84,7 @@ class MPPFTC_Admin_Settings_Helper {
 			),
 		);
 
-		$panel->add_section( 'mppftc-settings', __( 'MediaPress Featured Settings', 'mpp-featured-content' ) )->add_fields( $fields );
+		$section->add_fields( $fields );
 	}
 
 	/**

@@ -91,6 +91,7 @@ class MPPFTC_Featured_Content {
 
 		$files = array(
 			'core/mppftc-functions.php',
+			'core/mppftc-templates.php',
 			'core/class-mppftc-ajax-handler.php',
 			'core/class-mppftc-action-handler.php',
 			'core/class-mppftc-hooks-helper.php',
