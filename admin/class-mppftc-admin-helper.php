@@ -60,7 +60,7 @@ class MPPFTC_Admin_Settings_Helper {
 				'type'    => 'multicheck',
 				'options' => array(
 					'single_media'   => __( 'Single Media Page', 'mpp-featured-content' ),
-					'light_box'      => __( 'LightBox', 'mpp-featured-content' ),
+					'lightbox'      => __( 'Lightbox', 'mpp-featured-content' ),
 					'single_gallery' => __( 'Single Gallery', 'mpp-featured-content' ),
 					'gallery_home'   => __( 'Gallery home', 'mpp-featured-content' ),
 				),
@@ -76,6 +76,16 @@ class MPPFTC_Admin_Settings_Helper {
 				'label'   => __( 'Show in group header', 'mpp-featured-content' ),
 				'type'    => 'select',
 				'options' => $this->get_header_options(),
+			),
+			array(
+				'name'    => 'mppftc_show_header_media_in_lightbox',
+				'label'   => __( 'Open Media in lightbox when the featured item in header is clicked.', 'mpp-featured-content' ),
+				'type'    => 'select',
+				'options' => array(
+					1 => __( 'Yes', 'mpp-featured-content' ),
+					0 => __( 'No', 'mpp-featured-content' ),
+				),
+				'default' => 1,
 			),
 			array(
 				'name'  => 'mppftc_header_item_limit',

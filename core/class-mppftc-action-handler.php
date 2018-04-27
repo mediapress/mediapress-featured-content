@@ -37,15 +37,19 @@ class MPPFTC_Action_Handler {
 	 * Register new subnav items for gallery tab
 	 */
 	public function register_subnav_items() {
+		$user_id = bp_displayed_user_id();
+
+		if ( ! mppftc_is_enabled_for_component( 'members', $user_id ) ) {
+			return;
+		}
 
 		$user_domain = trailingslashit( bp_displayed_user_domain() );
 		$parent_slug = MPP_GALLERY_SLUG;
 		$parent_url  = trailingslashit( $user_domain . $parent_slug );
-		$enabled_for = mpp_get_option( 'mppftc_enabled_for', array() );
 
 		$sub_nav_items = array();
 
-		if ( in_array( 'gallery', $enabled_for,true ) ) {
+		if ( mppftc_is_enabled_for_gallery() ) {
 			$sub_nav_items[] = array(
 				'name'            => __( 'Featured Gallery', 'mpp-featured-content' ),
 				'slug'            => 'featured-gallery',
@@ -56,7 +60,7 @@ class MPPFTC_Action_Handler {
 			);
 		}
 
-		if ( in_array( 'media', $enabled_for, true ) ) {
+		if ( mppftc_is_enabled_for_media() ) {
 			$sub_nav_items[] = array(
 				'name'            => __( 'Featured Media', 'mpp-featured-content' ),
 				'slug'            => 'featured-media',
@@ -77,13 +81,17 @@ class MPPFTC_Action_Handler {
 	 */
 	public function register_group_subnav_items() {
 
-		$enabled_for = mpp_get_option( 'mppftc_enabled_for', array() );
+		$group_id = bp_is_group() ? groups_get_current_group()->id : 0;
 
-		if ( in_array( 'gallery', $enabled_for,true ) ) {
+		if ( ! mppftc_is_enabled_for_component( 'groups', $group_id ) ) {
+			return;
+		}
+
+		if ( mppftc_is_enabled_for_gallery() ) {
 			echo sprintf( "<li><a href='%s'>%s</a></li>", esc_url( mppftc_groups_get_featured_gallery_url() ), __( 'Featured Gallery', 'mpp-featured-content' ) );
 		}
 
-		if ( in_array( 'media', $enabled_for,true ) ) {
+		if ( mppftc_is_enabled_for_media() ) {
 			echo sprintf( "<li><a href='%s'>%s</a></li>", esc_url( mppftc_groups_get_featured_media_url() ), __( 'Featured Media', 'mpp-featured-content' ) );
 		}
 	}
@@ -92,6 +100,11 @@ class MPPFTC_Action_Handler {
 	 * Reset query for featured media and featured gallery screen
 	 */
 	public function reset_query() {
+		$component = mpp_get_current_component();
+
+		if ( ! $component || ! mppftc_is_enabled_for_component( $component, mpp_get_current_component_id() ) ) {
+			return;
+		}
 
 		if ( mpp_is_gallery_component() && bp_is_current_action( 'featured-media' ) ) {
 			mediapress()->is_gallery_home   = false;
@@ -113,6 +126,11 @@ class MPPFTC_Action_Handler {
 	 * @return string found template
 	 */
 	public function load_group_template( $template ) {
+		$group_id = bp_is_group() ? groups_get_current_group()->id : 0;
+
+		if ( ! mppftc_is_enabled_for_component( 'groups', $group_id ) ) {
+			return $template;
+		}
 
 		if ( ! mpp_is_group_gallery_component() ) {
 			return $template;

@@ -176,7 +176,7 @@ class MPPFTC_Gallery_widget extends WP_Widget {
 
 			<?php else: ?>
 
-				<?php _e( 'No Active component', 'mpp-featured-content' ); ?>
+				<?php _e( 'No active component', 'mpp-featured-content' ); ?>
 
 			<?php endif; ?>
         </p>

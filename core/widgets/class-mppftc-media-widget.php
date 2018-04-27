@@ -167,7 +167,7 @@ class MPPFTC_Media_Widget extends WP_Widget {
                 </select>
 
 			<?php else : ?>
-				<?php _e( 'No Active component', 'mpp-featured-content' ); ?>
+				<?php _e( 'No active component', 'mpp-featured-content' ); ?>
 			<?php endif; ?>
 
         </p>
@@ -188,8 +188,8 @@ class MPPFTC_Media_Widget extends WP_Widget {
 					<?php endforeach; ?>
                 </select>
 
-			<?php else: ?>
-				<?php _e( 'No Active Type!', 'mpp-featured-content' ); ?>
+			<?php else : ?>
+				<?php _e( 'No active type!', 'mpp-featured-content' ); ?>
 			<?php endif; ?>
 
         </p>
@@ -216,20 +216,16 @@ class MPPFTC_Media_Widget extends WP_Widget {
         <p>
             <label>
 				<?php _e( 'Max media to show:', 'mpp-featured-content' ); ?>
-                <input type="number" name="<?php echo $this->get_field_name( 'max_to_list' ); ?>"
-                       value="<?php echo $max_to_list; ?>"/>
+                <input type="number" name="<?php echo $this->get_field_name( 'max_to_list' ); ?>" value="<?php echo $max_to_list; ?>"/>
             </label>
         </p>
 
         <p>
             <label>
 				<?php _e( 'Sort Order:', 'mpp-featured-content' ); ?>
-                <select id="<?php echo $this->get_field_id( 'order' ); ?>"
-                        name="<?php echo $this->get_field_name( 'order' ); ?>">
-                    <option
-                            value="ASC" <?php selected( 'ASC', $order ); ?>><?php _e( 'Ascending', 'mpp-featured-content' ); ?></option>
-                    <option
-                            value="DESC" <?php selected( 'DESC', $order ); ?>><?php _e( 'Descending', 'mpp-featured-content' ); ?></option>
+                <select id="<?php echo $this->get_field_id( 'order' ); ?>" name="<?php echo $this->get_field_name( 'order' ); ?>">
+                    <option value="ASC" <?php selected( 'ASC', $order ); ?>><?php _e( 'Ascending', 'mpp-featured-content' ); ?></option>
+                    <option value="DESC" <?php selected( 'DESC', $order ); ?>><?php _e( 'Descending', 'mpp-featured-content' ); ?></option>
                 </select>
             </label>
 
@@ -238,14 +234,10 @@ class MPPFTC_Media_Widget extends WP_Widget {
         <p>
             <label>
 				<?php _e( 'Order By:', 'mpp-featured-content' ); ?>
-                <select id="<?php echo $this->get_field_id( 'order_by' ); ?>"
-                        name="<?php echo $this->get_field_name( 'order_by' ); ?>">
-                    <option
-                            value="title" <?php selected( 'title', $order_by ); ?>><?php _e( 'Alphabet', 'mpp-featured-content' ); ?></option>
-                    <option
-                            value="date" <?php selected( 'date', $order_by ); ?>><?php _e( 'Date', 'mpp-featured-content' ); ?></option>
-                    <option
-                            value="rand" <?php selected( 'rand', $order_by ); ?>><?php _e( 'Random', 'mpp-featured-content' ); ?></option>
+                <select id="<?php echo $this->get_field_id( 'order_by' ); ?>" name="<?php echo $this->get_field_name( 'order_by' ); ?>">
+                    <option value="title" <?php selected( 'title', $order_by ); ?>><?php _e( 'Alphabet', 'mpp-featured-content' ); ?></option>
+                    <option value="date" <?php selected( 'date', $order_by ); ?>><?php _e( 'Date', 'mpp-featured-content' ); ?></option>
+                    <option value="rand" <?php selected( 'rand', $order_by ); ?>><?php _e( 'Random', 'mpp-featured-content' ); ?></option>
                 </select>
             </label>
         </p>

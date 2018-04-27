@@ -1,5 +1,5 @@
 === MediaPress Featured Content ===
-Contributors: BuddyDev, raviousprime
+Contributors: BuddyDev, raviousprime,sbrajesh
 Tags: mediapress, buddydpress, featured, user-featured-gallery, user-featured-photo
 Requires at least: 4.5
 Tested up to: 4.9.5
@@ -9,7 +9,20 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-MediaPress addons that works with BuddyPress and allow user to mark their gallery and media as featured. SideAdmin can show user's featured media or gallery in header as well as sidebar.
+MediaPress Featured Content plugin allows BuddyPress users to set featured photos, set featured videos or featured galleries while using BuddyPress and MediaPress gallery plugin.
+
+This plugin required [MediaPress](https://wordpress.org/plugins/mediapress/) and [BuddyPress](https://wordpress.org/plugins/buddypress/).
+The plugin comes Packed with
+1. BuddyPress Feature Media Widget:- Show Users featured media in a widget
+2. BuddyPress Featured Gallery widget :- Show users featured galleries in the widget.
+3. Automatic display of the featured media list in BuddyPress User Profile header
+4. Automatic display of the featured gallery list in BuddyPress Group Header
+5. Shotcodes to list featured media or galleries.
+6. Options to use lightbox with the featured media or gallery.
+7. Extensive options.
+
+For more details, Please see the MediaPress [Featured Content Plugin]() page on [BuddyDev]()
+
 
 == Installation ==
 

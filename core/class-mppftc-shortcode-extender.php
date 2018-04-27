@@ -19,13 +19,13 @@ class MPPFTC_Shortcode_Extender {
 	 * The constructor.
 	 */
 	public function __construct() {
-		$this->setup_hooks();
+		$this->setup();
 	}
 
 	/**
 	 * Call back to various hooks
 	 */
-	public function setup_hooks() {
+	public function setup() {
 
 		// extend shortcodes to list featured items.
 		// featured attribute support to [mpp-list-gallery] and filter galleries based on categories ids.
@@ -57,7 +57,6 @@ class MPPFTC_Shortcode_Extender {
 	 * @return array
 	 */
 	public function modify_mpp_list_gallery_query_args( $atts ) {
-
 
 		/**
 		 * Note: it will conflict with other meta queries.

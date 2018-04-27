@@ -37,22 +37,74 @@ function mppftc_is_item_featurable( $item_id ) {
 
 	$item = mppftc_get_item( $item_id );
 
-	$enabled_for       = mpp_get_option( 'mppftc_enabled_for', array() );
-	$enabled_component = mpp_get_option( 'mppftc_enabled_components', array() );
-	$enabled_type      = mpp_get_option( 'mppftc_enabled_types', array() );
+	$is_featurable = true;
+
+	if ( ! $item ) {
+		$is_featurable = false;
+	} elseif ( ! mppftc_is_enabled_for_component( $item->component, $item->component_id ) ) {
+		$is_featurable = false;
+	} elseif ( ! mppftc_is_enabled_for_type( $item->type, $item->component, $item->component_id ) ) {
+		$is_featurable = false;
+	} elseif ( $item instanceof MPP_Gallery ) {
+		$is_featurable = mppftc_is_enabled_for_gallery();
+	} elseif ( $item instanceof MPP_Media ) {
+		$is_featurable = mppftc_is_enabled_for_media();
+	}
+
+	return $is_featurable;
+}
+
+/**
+ * Is featured Content module enabled for the given component.
+ *
+ * @param string $component component.
+ * @param int    $component_id component id.
+ *
+ * @return bool
+ */
+function mppftc_is_enabled_for_component( $component, $component_id ) {
+	$enabled_components = mpp_get_option( 'mppftc_enabled_components', array() );
+
+	return apply_filters( 'mppftc_enabled_for_component', in_array( $component, $enabled_components,true ), $component, $component_id );
+}
+
+/**
+ * Is featured Content module enabled for the given component.
+ *
+ * @param string $type media type.
+ * @param string $component component.
+ * @param int    $component_id component id.
+ *
+ * @return bool
+ */
+function mppftc_is_enabled_for_type( $type, $component = '', $component_id = 0 ) {
+	$enabled_types      = mpp_get_option( 'mppftc_enabled_types', array() );
+
+	return apply_filters( 'mppftc_enabled_for_type', $enabled_types && isset( $enabled_types[ $type ] ), $type, $component, $component_id );
+}
+
+/**
+ * Is enabled for gallery?
+ *
+ * @return bool
+ */
+function mppftc_is_enabled_for_gallery() {
+
+	$enabled_for = mpp_get_option( 'mppftc_enabled_for', array() );
 
 	// Complex will fix in future.
-	if ( mpp_is_valid_media( $item_id ) && ! in_array( 'media', $enabled_for, true ) ) {
-		return false;
-	} elseif ( mpp_is_valid_gallery( $item_id ) && ! in_array( 'gallery', $enabled_for, true ) ) {
-		return false;
-	}
+	return in_array( 'gallery', $enabled_for, true );
+}
 
-	if ( ! in_array( $item->component, $enabled_component,true ) || ! in_array( $item->type, $enabled_type, true ) ) {
-		return false;
-	}
-
-	return true;
+/**
+ * Is enabled of media.
+ *
+ * @return bool
+ */
+function mppftc_is_enabled_for_media() {
+	$enabled_for = mpp_get_option( 'mppftc_enabled_for', array() );
+	// Complex will fix in future.
+	return in_array( 'media', $enabled_for, true );
 }
 
 /**
@@ -68,9 +120,10 @@ function mppftc_user_can_mark_item_featured( $item_id ) {
 	$user_id = get_current_user_id();
 	$item    = mppftc_get_item( $item_id );
 
-	if ( empty( $user_id ) || empty( $item ) ) {
+	if ( empty( $user_id ) || empty( $item ) || ! mppftc_is_item_featurable( $item_id ) ) {
 		return false;
 	}
+
 	// do not use === here, the values can be str/int.
 	if ( $item->user_id == $user_id ) {
 		$can = true;

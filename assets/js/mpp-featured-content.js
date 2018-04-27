@@ -13,10 +13,25 @@ jQuery(document).ready(function( $ ){
             nonce:   $this.data('nonce')
         }, function(resp){
             if ( resp.success ) {
-                $this.html( resp.data.label );
+                $this.replaceWith( resp.data.button );
             }
         });
 
+        return false;
+    });
+
+    // lightbox for media.
+    $(document).on('click', '.mppftc-featured-media a', function () {
+        var $this = $(this);
+        var $container = $this.parents( '.mppftc-featured-media' );
+        if( $container.data('mpp-lightbox-enabled') == '0' ) {
+            return ;
+        }
+
+        if( ! mpp.lightbox.isLoaded() ) {
+            return ;
+        }
+        mpp.lightbox.media(  $container.data('mpp-media-ids'), 0, $this.attr('href'), $this.data('mpp-media-id') );
         return false;
     });
 });
