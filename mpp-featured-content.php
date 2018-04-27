@@ -94,7 +94,8 @@ class MPPFTC_Featured_Content {
 			'core/mppftc-templates.php',
 			'core/class-mppftc-ajax-handler.php',
 			'core/class-mppftc-action-handler.php',
-			'core/class-mppftc-hooks-helper.php',
+			'core/class-mppftc-view-helper.php',
+			'core/class-mppftc-shortcode-extender.php',
 			'core/widgets/class-mppftc-gallery-widget.php',
 			'core/widgets/class-mppftc-media-widget.php',
 		);
