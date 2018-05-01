@@ -1,0 +1,234 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: MediaPress Featured Content\n"
+"POT-Creation-Date: 2018-05-01 11:41+0530\n"
+"PO-Revision-Date: 2018-05-01 11:41+0530\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: admin/class-mppftc-admin-helper.php:33
+msgid "MediaPress Featured Content"
+msgstr ""
+
+#: admin/class-mppftc-admin-helper.php:38
+msgid "Enable for"
+msgstr ""
+
+#: admin/class-mppftc-admin-helper.php:41
+msgid "Media"
+msgstr ""
+
+#: admin/class-mppftc-admin-helper.php:42
+msgid "Gallery"
+msgstr ""
+
+#: admin/class-mppftc-admin-helper.php:47
+msgid "Select components"
+msgstr ""
+
+#: admin/class-mppftc-admin-helper.php:53
+msgid "Select types"
+msgstr ""
+
+#: admin/class-mppftc-admin-helper.php:59
+msgid "Where to show mark featured button?"
+msgstr ""
+
+#: admin/class-mppftc-admin-helper.php:62
+msgid "Single Media Page"
+msgstr ""
+
+#: admin/class-mppftc-admin-helper.php:63
+msgid "Lightbox"
+msgstr ""
+
+#: admin/class-mppftc-admin-helper.php:64
+msgid "Single Gallery"
+msgstr ""
+
+#: admin/class-mppftc-admin-helper.php:65
+msgid "Gallery home"
+msgstr ""
+
+#: admin/class-mppftc-admin-helper.php:70
+msgid "Show in user header"
+msgstr ""
+
+#: admin/class-mppftc-admin-helper.php:76
+msgid "Show in group header"
+msgstr ""
+
+#: admin/class-mppftc-admin-helper.php:82
+msgid "Open Media in lightbox when the featured item in header is clicked."
+msgstr ""
+
+#: admin/class-mppftc-admin-helper.php:85
+msgid "Yes"
+msgstr ""
+
+#: admin/class-mppftc-admin-helper.php:86
+msgid "No"
+msgstr ""
+
+#: admin/class-mppftc-admin-helper.php:92
+msgid "Header item limit"
+msgstr ""
+
+#: admin/class-mppftc-admin-helper.php:107
+msgid "None"
+msgstr ""
+
+#: admin/class-mppftc-admin-helper.php:108
+msgid "Media List"
+msgstr ""
+
+#: admin/class-mppftc-admin-helper.php:109
+msgid "Gallery List"
+msgstr ""
+
+#: core/class-mppftc-action-handler.php:54
+#: core/class-mppftc-action-handler.php:91
+msgid "Featured Gallery"
+msgstr ""
+
+#: core/class-mppftc-action-handler.php:65
+#: core/class-mppftc-action-handler.php:95
+msgid "Featured Media"
+msgstr ""
+
+#: core/class-mppftc-ajax-handler.php:43
+msgid "Could not process."
+msgstr ""
+
+#: core/mppftc-functions.php:161
+msgid "Users"
+msgstr ""
+
+#: core/mppftc-functions.php:163
+msgid "Groups"
+msgstr ""
+
+#: core/mppftc-functions.php:317
+msgid "Logged In"
+msgstr ""
+
+#: core/mppftc-functions.php:318
+msgid "Displayed"
+msgstr ""
+
+#: core/mppftc-templates.php:33
+msgid "Set Featured"
+msgstr ""
+
+#: core/mppftc-templates.php:38
+msgid "Remove Featured"
+msgstr ""
+
+#: core/widgets/class-mppftc-gallery-widget.php:27
+msgid "( MediaPress ) Featured Gallery"
+msgstr ""
+
+#: core/widgets/class-mppftc-gallery-widget.php:115
+msgid "Featured Galleries"
+msgstr ""
+
+#: core/widgets/class-mppftc-gallery-widget.php:139
+#: core/widgets/class-mppftc-media-widget.php:133
+msgid "Title:"
+msgstr ""
+
+#: core/widgets/class-mppftc-gallery-widget.php:147
+#: core/widgets/class-mppftc-media-widget.php:141
+msgid "List media of user:"
+msgstr ""
+
+#: core/widgets/class-mppftc-gallery-widget.php:165
+#: core/widgets/class-mppftc-media-widget.php:158
+msgid "Select Component:"
+msgstr ""
+
+#: core/widgets/class-mppftc-gallery-widget.php:179
+#: core/widgets/class-mppftc-media-widget.php:170
+msgid "No active component"
+msgstr ""
+
+#: core/widgets/class-mppftc-gallery-widget.php:189
+#: core/widgets/class-mppftc-media-widget.php:178
+msgid "Select Type:"
+msgstr ""
+
+#: core/widgets/class-mppftc-gallery-widget.php:208
+msgid "No Active Type!"
+msgstr ""
+
+#: core/widgets/class-mppftc-gallery-widget.php:218
+#: core/widgets/class-mppftc-media-widget.php:200
+msgid "Select Status:"
+msgstr ""
+
+#: core/widgets/class-mppftc-gallery-widget.php:241
+#: core/widgets/class-mppftc-media-widget.php:218
+msgid "Max media to show:"
+msgstr ""
+
+#: core/widgets/class-mppftc-gallery-widget.php:249
+#: core/widgets/class-mppftc-media-widget.php:225
+msgid "Sort Order:"
+msgstr ""
+
+#: core/widgets/class-mppftc-gallery-widget.php:253
+#: core/widgets/class-mppftc-media-widget.php:227
+msgid "Ascending"
+msgstr ""
+
+#: core/widgets/class-mppftc-gallery-widget.php:255
+#: core/widgets/class-mppftc-media-widget.php:228
+msgid "Descending"
+msgstr ""
+
+#: core/widgets/class-mppftc-gallery-widget.php:263
+#: core/widgets/class-mppftc-media-widget.php:236
+msgid "Order By:"
+msgstr ""
+
+#: core/widgets/class-mppftc-gallery-widget.php:267
+#: core/widgets/class-mppftc-media-widget.php:238
+msgid "Alphabet"
+msgstr ""
+
+#: core/widgets/class-mppftc-gallery-widget.php:269
+#: core/widgets/class-mppftc-media-widget.php:239
+msgid "Date"
+msgstr ""
+
+#: core/widgets/class-mppftc-gallery-widget.php:271
+#: core/widgets/class-mppftc-media-widget.php:240
+msgid "Random"
+msgstr ""
+
+#: core/widgets/class-mppftc-media-widget.php:27
+msgid "( MediaPress ) Featured Media"
+msgstr ""
+
+#: core/widgets/class-mppftc-media-widget.php:109
+msgid "Featured Media items"
+msgstr ""
+
+#: core/widgets/class-mppftc-media-widget.php:192
+msgid "No active type!"
+msgstr ""
+
+#: templates/groups/loop-featured-media.php:54
+#: templates/members/loop-featured-media.php:54
+#: templates/widgets/loop-featured-media.php:48
+msgid "You do not have any featured media"
+msgstr ""
