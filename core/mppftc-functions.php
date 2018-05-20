@@ -248,7 +248,6 @@ function mppftc_get_featured_media( $args = array() ) {
 	$default = array(
 		'component'    => 'members',
 		'component_id' => get_current_user_id(),
-		'status'       => mpp_get_accessible_statuses(),
 		'per_page'     => 5,
 	);
 
