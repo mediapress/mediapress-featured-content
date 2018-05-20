@@ -39,7 +39,7 @@ class MPPFTC_Action_Handler {
 	public function register_subnav_items() {
 		$user_id = bp_displayed_user_id();
 
-		if ( ! mppftc_is_enabled_for_component( 'members', $user_id ) ) {
+		if ( ! mppftc_is_enabled_for_component( 'members' ) ) {
 			return;
 		}
 
@@ -83,7 +83,7 @@ class MPPFTC_Action_Handler {
 
 		$group_id = bp_is_group() ? groups_get_current_group()->id : 0;
 
-		if ( ! mppftc_is_enabled_for_component( 'groups', $group_id ) ) {
+		if ( ! mppftc_is_enabled_for_component( 'groups' ) ) {
 			return;
 		}
 
@@ -102,7 +102,7 @@ class MPPFTC_Action_Handler {
 	public function reset_query() {
 		$component = mpp_get_current_component();
 
-		if ( ! $component || ! mppftc_is_enabled_for_component( $component, mpp_get_current_component_id() ) ) {
+		if ( ! $component || ! mppftc_is_enabled_for_component( $component ) ) {
 			return;
 		}
 
@@ -128,11 +128,7 @@ class MPPFTC_Action_Handler {
 	public function load_group_template( $template ) {
 		$group_id = bp_is_group() ? groups_get_current_group()->id : 0;
 
-		if ( ! mppftc_is_enabled_for_component( 'groups', $group_id ) ) {
-			return $template;
-		}
-
-		if ( ! mpp_is_group_gallery_component() ) {
+		if ( ! mppftc_is_enabled_for_component( 'groups' ) ||  ! mpp_is_group_gallery_component() ) {
 			return $template;
 		}
 

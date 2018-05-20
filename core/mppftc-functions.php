@@ -41,9 +41,9 @@ function mppftc_is_item_featurable( $item_id ) {
 
 	if ( ! $item ) {
 		$is_featurable = false;
-	} elseif ( ! mppftc_is_enabled_for_component( $item->component, $item->component_id ) ) {
+	} elseif ( ! mppftc_is_enabled_for_component( $item->component ) ) {
 		$is_featurable = false;
-	} elseif ( ! mppftc_is_enabled_for_type( $item->type, $item->component, $item->component_id ) ) {
+	} elseif ( ! mppftc_is_enabled_for_type( $item->type ) ) {
 		$is_featurable = false;
 	} elseif ( $item instanceof MPP_Gallery ) {
 		$is_featurable = mppftc_is_enabled_for_gallery();
@@ -58,29 +58,24 @@ function mppftc_is_item_featurable( $item_id ) {
  * Is featured Content module enabled for the given component.
  *
  * @param string $component component.
- * @param int    $component_id component id.
  *
  * @return bool
  */
-function mppftc_is_enabled_for_component( $component, $component_id ) {
+function mppftc_is_enabled_for_component( $component ) {
 	$enabled_components = mpp_get_option( 'mppftc_enabled_components', array() );
-
-	return apply_filters( 'mppftc_enabled_for_component', in_array( $component, $enabled_components,true ), $component, $component_id );
+	return apply_filters( 'mppftc_enabled_for_component', in_array( $component, $enabled_components,true ), $component );
 }
 
 /**
  * Is featured Content module enabled for the given component.
  *
  * @param string $type media type.
- * @param string $component component.
- * @param int    $component_id component id.
  *
  * @return bool
  */
-function mppftc_is_enabled_for_type( $type, $component = '', $component_id = 0 ) {
-	$enabled_types      = mpp_get_option( 'mppftc_enabled_types', array() );
-
-	return apply_filters( 'mppftc_enabled_for_type', $enabled_types && isset( $enabled_types[ $type ] ), $type, $component, $component_id );
+function mppftc_is_enabled_for_type( $type ) {
+	$enabled_types = mpp_get_option( 'mppftc_enabled_types', array() );
+	return apply_filters( 'mppftc_enabled_for_type', in_array( $type, $enabled_types ), $type );
 }
 
 /**
@@ -253,6 +248,7 @@ function mppftc_get_featured_media( $args = array() ) {
 	$default = array(
 		'component'    => 'members',
 		'component_id' => get_current_user_id(),
+		'status'       => mpp_get_accessible_statuses(),
 		'per_page'     => 5,
 	);
 
@@ -263,6 +259,8 @@ function mppftc_get_featured_media( $args = array() ) {
 	 */
 	$args = wp_parse_args( $args, $default );
 	$args['meta_key'] = '_mppftc_featured';
+
+	$args['status'] = mpp_get_accessible_statuses( $args['component'], $args['component_id'] );
 
 	$query = new MPP_Media_Query( $args );
 
@@ -291,6 +289,8 @@ function mppftc_get_featured_galleries( $args = array() ) {
 	 */
 	$args = wp_parse_args( $args, $default );
 	$args['meta_key'] = '_mppftc_featured';
+
+	$args['status'] = mpp_get_accessible_statuses( $args['component'], $args['component_id'] );
 
 	$query = new MPP_Gallery_Query( $args );
 

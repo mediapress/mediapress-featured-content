@@ -92,14 +92,11 @@ class MPPFTC_Views_Helper {
 	 */
 	public function render_user_header_featured_items() {
 
-		if ( ! mppftc_is_enabled_for_component( 'members', bp_displayed_user_id() ) ) {
-			return;
-		}
-
+		$enabled        = mppftc_is_enabled_for_component( 'members' );
 		$show_in_header = mpp_get_option( 'mppftc_show_in_user_header', 'none' );
 
-		if ( 'none' === $show_in_header ) {
-			return '';
+		if ( ! $enabled || 'none' === $show_in_header ) {
+			return;
 		}
 
 		if ( 'media_list' === $show_in_header && mppftc_is_enabled_for_media() ) {
@@ -126,28 +123,24 @@ class MPPFTC_Views_Helper {
 	 */
 	public function render_group_header_featured_items() {
 
-		$group_id = bp_is_group() ? groups_get_current_group()->id : 0;
-
-		if ( ! mppftc_is_enabled_for_component( 'groups', $group_id ) ) {
-			return;
-		}
-
+		$group_id       = groups_get_current_group()->id;
+		$enabled        = mppftc_is_enabled_for_component( 'groups' );
 		$show_in_header = mpp_get_option( 'mppftc_show_in_group_header', 'none' );
 
-		if ( 'none' === $show_in_header ) {
-			return '';
+		if ( ! $enabled || 'none' === $show_in_header ) {
+			return;
 		}
 
 		if ( 'media_list' === $show_in_header ) {
 			mppftc_featured_media( array(
-				'component'    => 'members',
-				'component_id' => bp_displayed_user_id(),
+				'component'    => 'groups',
+				'component_id' => $group_id,
 				'per_page'     => mppftc_get_header_item_limit(),
 			) );
 		} elseif ( 'gallery_list' === $show_in_header ) {
 			mppftc_featured_galleries( array(
-				'component'    => 'members',
-				'component_id' => bp_displayed_user_id(),
+				'component'    => 'groups',
+				'component_id' => $group_id,
 				'per_page'     => mppftc_get_header_item_limit(),
 			) );
 		}
