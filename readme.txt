@@ -4,7 +4,7 @@ Contributors: buddydev,raviousprime,sbrajesh
 Tags: mediapress,buddypress,buddypress-gallery, user-featured-gallery
 Requires at least: 4.6
 Tested up to: 4.9.5
-Stable tag: 1.0.0
+Stable tag: 1.0.2
 Requires PHP: 5.3.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -57,6 +57,10 @@ Not yet. Only BuddyPress user and groups are supported for featuring gallery or 
 3. button in lightbox screenshot-3.png
 For more, please see MediaPress Featured Content [screenshots](https://buddydev.com/plugins/mpp-featured-content/#screenshot) 
 == Changelog ==
+
+= 1.0.2 =
+* Header image to show only accessible media/gallery
+* Group header to show group featured media/gallery
 
 = 1.0.0 =
 * Initial release

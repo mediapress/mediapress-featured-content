@@ -5,7 +5,7 @@
  * Plugin URI: https://buddydev.com/plugins/mpp-featured-content
  * Author: BuddyDev
  * Author URI: https://buddydev.com/
- * Version: 1.0.0
+ * Version: 1.0.2
  *
  * Text Domain: mpp-featured-content
  * Domain Path: /languages
